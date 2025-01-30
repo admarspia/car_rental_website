@@ -79,6 +79,7 @@ npm install
 npm start
 
 The frontend will run on http://localhost:3000.
+```
 Usage
 
     Sign Up / Login: Create an account or log in to access the full features of the car rental system.
@@ -86,7 +87,8 @@ Usage
     View Car Details: Click on any car to view more detailed information, including availability and specifications.
     Book a Car: Select your rental dates and proceed to book a car.
     Admin Features: Admins can manage car listings and users directly from the admin panel.
-```
+
+
 Deployment
 
 The application is deployed using Heroku for the backend and Netlify for the frontend. You can view the live demo here:
