@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CarCard from "./CarCard";
-import "../App.css"; // Assuming you have a global CSS file
+import "../App.css"; 
 
 function Search() {
   const [query, setQuery] = useState("");
@@ -13,15 +13,13 @@ function Search() {
     setQuery(e.target.value.trim());
   };
 
-  // Handle Enter key press to trigger search
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent form submission refresh
+      e.preventDefault();
       handleSearch();
     }
   };
 
-  // Function to fetch search results
   const handleSearch = () => {
     if (!query) {
       setCars([]);
@@ -63,7 +61,6 @@ function Search() {
 
   return (
     <div className="search-container">
-      {/* Search Input - Right Aligned */}
       <div className="search-input-container">
         <input
           id="query"
@@ -71,11 +68,10 @@ function Search() {
           placeholder="e.g. make:Ford model:Mustang year:2021"
           value={query}
           onChange={handleChange}
-          onKeyDown={handleKeyDown} // ✅ Triggers search only when Enter is pressed
+          onKeyDown={handleKeyDown}
         />
       </div>
 
-      {/* Results Section with Left Margin */}
       <div className="results-container">
         {loading ? (
           <p className="loading-text">Loading...</p>
