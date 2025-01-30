@@ -1,0 +1,24 @@
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Frontend build directory (if using create-react-app or other build tools)
+frontend/build/
+
+# Backend build directories (if using TypeScript or other build tools)
+backend/dist/
+
+# IDE/Editor files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
