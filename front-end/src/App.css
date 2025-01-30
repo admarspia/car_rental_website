@@ -1,0 +1,338 @@
+/* Header and Navigation Styling */
+.header, .home-header {
+  background-color: #0000009c;
+  color: white;
+  padding: 15px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1, .home-header h1 {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.home-header {
+  background-color: transparent;
+}
+
+.home-header:hover {
+  background-color: #1d29339c;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end; /* Align the nav to the right */
+  flex-grow: 1;
+}
+
+/* Navigation Menu Styling */
+.nav-tabs {
+  display: flex;
+  justify-content: flex-end;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.nav-item {
+  margin-left: 25px ;
+  text-decoration:  none;
+}
+
+
+
+.nav-link {
+
+  color: #ffffff !important;
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #353c42;
+  color: white;
+  font-weight: bold;
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background-color: #575b5e;
+  color: rgb(0, 0, 0) !important;
+  font-weight: bold;
+}
+
+/* Responsive Nav Menu - Mobile */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Mobile Styling for Nav */
+@media (max-width: 1100px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-tabs {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: #333;
+    padding: 15px;
+    width: 200px;
+    border-radius: 5px;
+  }
+
+  .nav-tabs.open {
+    display: flex;
+  }
+
+  .nav-item {
+    padding: 10px;
+    border-bottom: 1px solid #555;
+  }
+}
+
+/* Smaller Screen Adjustments */
+@media (max-width: 400px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .nav-tabs {
+    width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 5px;
+  }
+
+  .nav-item {
+    font-size: 1rem;
+    padding: 5px 10px;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Car List and Card Styling */
+.car-list {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.car-card {
+  flex: 0 0 auto;
+  width: 20rem;
+  height: 25rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+  transform: scale(1.01);
+}
+
+/* Hero Section Styling */
+.Hero-section {
+  background-image: url("https://images.unsplash.com/photo-1609362092873-66a50ae6ee1b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  height: 100vh;
+}
+
+.Hero {
+  float: left;
+  margin-left: 3rem;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.carousel-btn:hover {
+  color: #0056b3;
+}
+
+.carousel-btn:disabled {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Register Section Styling */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+.registering-form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5);
+}
+
+.btn-primary {
+  background: #667eea;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background: #5a67d8;
+}
+
+/* Responsive Form */
+@media (max-width: 400px) {
+  .register-container {
+    padding: 10px;
+  }
+
+  .registering-form {
+    max-width: 100%;
+    padding: 10px;
+    height: 100vh;
+  }
+
+  .registering-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .registering-form .form-control {
+    padding: 10px;
+  }
+
+  .registering-form .btn {
+    padding: 10px;
+  }
+}
+/* Container for the whole search section */
+.search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Styling the search input and aligning it to the right */
+.search-input-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 16px;
+  border-radius: 30px; /* Rounded corners */
+  border: 2px solid #ccc;
+  font-size: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.search-input:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.5);
+}
+
+/* Styling the results section */
+.results-container {
+  margin-top: 40px;
+}
+
+.loading-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+  text-align: center;
+}
+
+.message-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #d9534f;
+  text-align: center;
+}
+
+.no-cars-text {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+/* Styling the car list */
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  margin-left: 0; /* Added left margin for spacing */
+}
+
+/* Car cards should have margin and padding */
+.car-card {
+  padding: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-10px);
+}
+
+.car-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.car-card h3 {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.car-card p {
+  font-size: 14px;
+  color: #555;
+}
