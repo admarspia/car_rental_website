@@ -25,7 +25,7 @@ function CarCard({ car }) {
         onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
         onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
       >
-        {/* Car Image */}
+
         <Card.Img
           variant="top"
           src={car.imageUrl}
@@ -37,7 +37,6 @@ function CarCard({ car }) {
           }}
         />
 
-        {/* Card Content */}
         <Card.Body
           style={{
             padding: "1rem",
