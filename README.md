@@ -41,7 +41,7 @@ Built using **React**, **Node.js**, and **MongoDB**, Sophor Car Rental is design
 To get started, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/sophor-car-rental.git
+git clone https://github.com/your-username/sophor-car-rental_website.git
 cd sophor-car-rental
 
 Set up the Backend
@@ -86,7 +86,7 @@ Usage
     View Car Details: Click on any car to view more detailed information, including availability and specifications.
     Book a Car: Select your rental dates and proceed to book a car.
     Admin Features: Admins can manage car listings and users directly from the admin panel.
-
+```
 Deployment
 
 The application is deployed using Heroku for the backend and Netlify for the frontend. You can view the live demo here:
