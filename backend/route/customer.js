@@ -1,6 +1,11 @@
 const express = require("express");
-const { Customer, validateCustomer } = require("../models/customer"); // Correct import
+const { Customer, validateCust } = require("../models/customer"); 
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 // GET customers based on search query (name, email)
 router.get("/search", async (req, res) => {
@@ -8,8 +13,8 @@ router.get("/search", async (req, res) => {
     const { name, email } = req.query;
 
     const filter = {};
-    if (name) filter.name = new RegExp(name, "i"); // Case-insensitive search
-    if (email) filter.email = new RegExp(email, "i"); // Case-insensitive search
+    if (name) filter.name = new RegExp(name, "i"); 
+    if (email) filter.email = new RegExp(email, "i"); 
 
     const customers = await Customer.find(filter)
       .exec();
@@ -38,8 +43,8 @@ router.get("/", async (req, res) => {
 // POST a new customer (register)
 router.post("/register", async (req, res) => {
   try {
-    const { error } = validateCustomer(req.body); // Validate input data
-    if (error) return res.status(400).send(error.details[0].message); // Handle validation errors
+    const { error } = validateCust(req.body); 
+    if (error) return res.status(400).send(error.details[0].message); 
 
     const customer = new Customer({
       name: req.body.name,
@@ -60,9 +65,8 @@ router.post("/register", async (req, res) => {
 // PUT to update a customer
 router.put("/:id", async (req, res) => {
   try {
-    const { error } = validateCustomer(req.body); // Validate input data
-    if (error) return res.status(400).send(error.details[0].message); // Handle validation errors
-
+    const { error } = validateCust(req.body); 
+    if (error) return res.status(400).send(error.details[0].message);
     const customer = await Customer.findByIdAndUpdate(
       req.params.id,
       {
@@ -98,20 +102,31 @@ router.delete("/:id", async (req, res) => {
 // POST for login (authenticate customer)
 router.post("/login", async (req, res) => {
   try {
-    const { name, password } = req.body;
-    const customer = await Customer.findOne({ name });
+    const { email, password } = req.body;
+    const customer = await Customer.findOne({ email });
 
-    if (!customer || customer.password !== password)
+    const isMatch = await customer.matchPassword(password);
+    if (!isMatch)
       return res.status(401).send({ message: "Invalid credentials" });
 
-    res.send({ message: "Login successful.", customerId: customer._id });
+    // Sign JWT token
+  const token = jwt.sign(
+    { id: customer.id, email: customer.email },
+    process.env.JWT_SECRET, 
+    { expiresIn: "1w" }
+  );
+
+    res.status(200).send({
+      message: "Login successful.",
+      customerId: customer._id,
+      token,
+    });
   } catch (err) {
     console.error("Error during login:", err);
     res.status(500).send({ message: "Server error. Please try again later." });
   }
 });
 
-// GET customer by ID
 router.get("/:id", async (req, res) => {
   try {
     const customer = await Customer.findById(req.params.id);
@@ -125,5 +140,6 @@ router.get("/:id", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
 
 module.exports = router;
