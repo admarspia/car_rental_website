@@ -4,8 +4,9 @@ const mongoose = require("mongoose");
 const cars = require("./route/cars");
 const customers = require("./route/customer");
 const rentals = require("./route/rentals");
+const dotenv = require('dotenv')
 
-
+dotenv.config()
 const app = express();
 app.use(cors());
 
