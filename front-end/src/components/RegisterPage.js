@@ -17,7 +17,7 @@ function Register() {
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault(); 
     try {
       const response = await fetch("http://localhost:5000/customers/register", {
         method: "POST",
