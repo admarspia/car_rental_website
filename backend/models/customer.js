@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
-
+const bcrypt = require('bcryptjs');
 // Define the Customer schema and model
-const Customer = mongoose.model(
-  "customer",
-  mongoose.Schema({
+
+const customerSchema = new mongoose.Schema({
     name: {
       type: String,
       maxlength: 255,
@@ -39,7 +38,18 @@ const Customer = mongoose.model(
       default: 0.0,
     },
   })
-);
+
+customerSchema.pre("save", async function (next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next()
+})
+
+customerSchema.methods.matchPassword = async function (enteredPassword) {
+  return await bcrypt.compare(enteredPassword, this.password);
+};
+
+const Customer = mongoose.model('Customer', customerSchema);
 
 // Validation function for customer input
 function validateCustomer(customer) {
@@ -53,4 +63,4 @@ function validateCustomer(customer) {
   return schema.validate(customer);
 }
 
-module.exports = { Customer, validate: validateCustomer };
+module.exports = { Customer, validateCust: validateCustomer };
